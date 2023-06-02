@@ -1,32 +1,18 @@
-import { Injectable, inject } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanActivateFn } from '@angular/router';
+import { inject } from '@angular/core';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AccountService } from '@app/_services';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
 
-@Injectable({ providedIn: 'root' })
-class PermissionsService  {
-  constructor(
-    private router: Router,
-    private accountService: AccountService,
-  ) { }
+export function authGuard(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const router = inject(Router);
+    const accountService = inject(AccountService);
+    const user = accountService.userValue;
+    if (user) {
+        // authorised so return true
+        return true;
+    }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean | Observable<boolean | UrlTree> {
-    return this.accountService.login(route.queryParams.username, route.queryParams.password).pipe(
-      map(() => true),
-      catchError(() => {
-        this.router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
-        return of(false);
-      })
-    );
-  }
-}
-
-export const AuthGuard: CanActivateFn = (next: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean | UrlTree> => {
-  const permissionsService = inject(PermissionsService);
-  return permissionsService.canActivate(next, state);
+    // not logged in so redirect to login page with the return url
+    router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
+    return false;
 }
