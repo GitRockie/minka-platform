@@ -4,10 +4,10 @@ import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
 
 @Component({
-    templateUrl: 'home.component.html',
+    templateUrl: 'dashboard.component.html',
     standalone: true
 })
-export class HomeComponent {
+export class DashboardComponent {
     user: User | null;
 
     constructor(private accountService: AccountService) {
