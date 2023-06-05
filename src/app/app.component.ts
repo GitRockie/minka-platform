@@ -6,11 +6,12 @@ import { AccountService } from './_services';
 import { User } from './_models';
 import { AlertComponent } from './_components/alert/alert.component';
 import { FooterComponent, SidebarComponent } from './_components';
+import { NavbarComponent } from './_components/navbar/navbar.component';
 
 @Component({
     selector: 'app-root', templateUrl: 'app.component.html',
     standalone: true,
-    imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent, FooterComponent, SidebarComponent]
+    imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent, FooterComponent, SidebarComponent, NavbarComponent]
 })
 export class AppComponent {
     user?: User | null;
