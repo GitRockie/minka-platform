@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import Chart from 'chart.js';
+import {Chart, ChartConfiguration} from 'chart.js';
 
 @Component({
   selector: "app-dashboard",
@@ -7,10 +7,10 @@ import Chart from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
   public canvas : any;
-  public ctx;
+  public ctx? : any;
   public datasets: any;
   public data: any;
-  public myChartData;
+  public myChartData? : any;
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
@@ -403,7 +403,7 @@ export class DashboardComponent implements OnInit {
     gradientStroke.addColorStop(0.4, 'rgba(233,32,16,0.0)');
     gradientStroke.addColorStop(0, 'rgba(233,32,16,0)'); //red colors
 
-    var config = {
+    const config: ChartConfiguration<'line'> = {
       type: 'line',
       data: {
         labels: chart_labels,
@@ -439,23 +439,21 @@ export class DashboardComponent implements OnInit {
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
 
-    var myChart = new Chart(this.ctx, {
+    const myChart1 = new Chart(this.ctx, {
       type: 'bar',
-      responsive: true,
-      legend: {
-        display: false
-      },
+     
+  
       data: {
         labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
         datasets: [{
           label: "Countries",
-          fill: true,
+         
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
           borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
+      
+
           data: [53, 20, 10, 80, 100, 45],
         }]
       },

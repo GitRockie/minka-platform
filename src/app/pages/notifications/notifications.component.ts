@@ -17,7 +17,7 @@ export class NotificationsComponent implements OnInit {
 
   constructor(private toastr: ToastrService) {}
 
-  showNotification(from, align){
+  showNotification(from: string, align: string){
 
       const color = Math.floor((Math.random() * 5) + 1);
 

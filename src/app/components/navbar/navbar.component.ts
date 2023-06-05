@@ -10,7 +10,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  private listTitles: any[];
+  private listTitles?: any[];
   location: Location;
   mobile_menu_visible: any = 0;
   private toggleButton: any;
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public isCollapsed = true;
 
-  closeResult: string;
+  closeResult?: string;
 
   constructor(
     location: Location,
@@ -103,6 +103,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   sidebarToggle() {
     // const toggleButton = this.toggleButton;
     // const html = document.getElementsByTagName('html')[0];
+    var $layer: any;
     var $toggle = document.getElementsByClassName("navbar-toggler")[0];
 
     if (this.sidebarVisible === false) {
@@ -128,7 +129,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         $toggle.classList.add("toggled");
       }, 430);
 
-      var $layer = document.createElement("div");
+      $layer = document.createElement("div");
       $layer.setAttribute("class", "close-layer");
 
       if (html.querySelectorAll(".main-panel")) {
@@ -143,16 +144,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
         $layer.classList.add("visible");
       }, 100);
 
-      $layer.onclick = function() {
+      $layer.onclick = () => {
         //asign a function
         html.classList.remove("nav-open");
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
-        setTimeout(function() {
+        setTimeout(() => {
           $layer.remove();
           $toggle.classList.remove("toggled");
         }, 400);
-      }.bind(this);
+      };
 
       html.classList.add("nav-open");
       this.mobile_menu_visible = 1;
@@ -165,15 +166,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
       titlee = titlee.slice(1);
     }
 
-    for (var item = 0; item < this.listTitles.length; item++) {
-      if (this.listTitles[item].path === titlee) {
-        return this.listTitles[item].title;
+    for (var item = 0; item < this.listTitles!.length; item++) {
+      if (this.listTitles![item].path === titlee) {
+        return this.listTitles![item].title;
       }
     }
     return "Dashboard";
   }
 
-  open(content) {
+  open(content: any) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {

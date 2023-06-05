@@ -72,7 +72,7 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ["./sidebar.component.css"]
 })
 export class SidebarComponent implements OnInit {
-  menuItems: any[];
+  menuItems?: any[];
 
   constructor() {}
 

@@ -9,18 +9,18 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./auth-layout.component.scss']
 })
 export class AuthLayoutComponent implements OnInit, OnDestroy {
-  public menuItems: any[];
+  public menuItems?: any[];
   test: Date = new Date();
-  closeResult: string;
+  closeResult?: string;
   public sidebarColor: string = "red";
   public isCollapsed = true;
   mobile_menu_visible: any = 0;
   private toggleButton: any;
-  private sidebarVisible: boolean;
+  private sidebarVisible?: boolean;
 
   constructor(private router: Router, private modalService: NgbModal) { }
 
-  changeSidebarColor(color){
+  changeSidebarColor(color: string){
     var sidebar = document.getElementsByClassName('sidebar')[0];
     var mainPanel = document.getElementsByClassName('main-panel')[0];
 
@@ -33,7 +33,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
         mainPanel.setAttribute('data',color);
     }
   }
-  changeDashboardColor(color){
+  changeDashboardColor(color: string){
     var body = document.getElementsByTagName('body')[0];
     if (body && color === 'white-content') {
         body.classList.add(color);
@@ -87,7 +87,10 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     document.body.classList.remove("rtl", "menu-on-right");
     // we also need to delete the rtl bootstrap, so it does not break the other pages
     // that do not make use of rtl
-    document.getElementById("rtl-id").remove();
+    const rtlLink = document.getElementById("rtl-id");
+  if (rtlLink) {
+    rtlLink.remove();
+  }
   }
   collapse() {
     this.isCollapsed = !this.isCollapsed;
@@ -149,7 +152,7 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
     if (this.mobile_menu_visible == 1) {
       // $('html').removeClass('nav-open');
       html.classList.remove("nav-open");
-      if ($layer) {
+      if ($layer!) {
         $layer.remove();
       }
       setTimeout(function() {
@@ -177,22 +180,22 @@ export class AuthLayoutComponent implements OnInit, OnDestroy {
         $layer.classList.add("visible");
       }, 100);
 
-      $layer.onclick = function() {
+      $layer.onclick = () => {
         //asign a function
         html.classList.remove("nav-open");
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
-        setTimeout(function() {
+        setTimeout(() =>{
           $layer.remove();
           $toggle.classList.remove("toggled");
         }, 400);
-      }.bind(this);
+      };
 
       html.classList.add("nav-open");
       this.mobile_menu_visible = 1;
     }
   }
-  open(content) {
+  open(content: any) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
