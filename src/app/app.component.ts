@@ -4,12 +4,13 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 
 import { AccountService } from './_services';
 import { User } from './_models';
-import { AlertComponent } from './_components/alert.component';
+import { AlertComponent } from './_components/alert/alert.component';
+import { FooterComponent } from './_components';
 
 @Component({
     selector: 'app-root', templateUrl: 'app.component.html',
     standalone: true,
-    imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent]
+    imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent, FooterComponent]
 })
 export class AppComponent {
     user?: User | null;
