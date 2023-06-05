@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
-
+import { Component,OnInit } from '@angular/core';
+import {Chart} from 'chart.js';
+import { ChartConfiguration } from 'chart.js';
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
 
 @Component({
+    selector: "app-dashboard",
     templateUrl: 'dashboard.component.html',
     standalone: true
 })
