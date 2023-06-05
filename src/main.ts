@@ -1,25 +1,27 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
+/*
+ =========================================================
+ * Black Dashboard Angular - v1.3.0
+ =========================================================
 
-// fake backend
-import { fakeBackendInterceptor } from '@app/_helpers';
+ * Product Page: https://www.creative-tim.com/product/black-dashboard-angular
+ * Copyright 2020 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
 
-import { AppComponent } from '@app/app.component';
-import { jwtInterceptor, errorInterceptor } from '@app/_helpers';
-import { APP_ROUTES } from '@app/app.routes';
+ =========================================================
 
-bootstrapApplication(AppComponent, {
-    providers: [
-        provideRouter(APP_ROUTES),
-        provideHttpClient(
-            withInterceptors([
-                jwtInterceptor, 
-                errorInterceptor,
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-                // fake backend
-                fakeBackendInterceptor
-            ])
-        )
-    ]
-});
+*/
+import { enableProdMode } from "@angular/core";
+import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
+
+import { AppModule } from "./app/app.module";
+import { environment } from "./environments/environment";
+
+if (environment.production) {
+  enableProdMode();
+}
+
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch(err => console.error(err));

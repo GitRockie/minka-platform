@@ -10,8 +10,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-  
-  private listTitles?: any[];
+  private listTitles: any[];
   location: Location;
   mobile_menu_visible: any = 0;
   private toggleButton: any;
@@ -19,7 +18,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public isCollapsed = true;
 
-  closeResult?: string;
+  closeResult: string;
 
   constructor(
     location: Location,
@@ -102,35 +101,36 @@ export class NavbarComponent implements OnInit, OnDestroy {
     html.classList.remove("nav-open");
   }
   sidebarToggle() {
-    const toggleButton = this.toggleButton;
-    const html = document.getElementsByTagName('html')[0];
+    // const toggleButton = this.toggleButton;
+    // const html = document.getElementsByTagName('html')[0];
     var $toggle = document.getElementsByClassName("navbar-toggler")[0];
-  
+
     if (this.sidebarVisible === false) {
       this.sidebarOpen();
     } else {
       this.sidebarClose();
     }
-  
+    const html = document.getElementsByTagName("html")[0];
+
     if (this.mobile_menu_visible == 1) {
       // $('html').removeClass('nav-open');
       html.classList.remove("nav-open");
-      if ($layer!) {
+      if ($layer) {
         $layer.remove();
       }
       setTimeout(function() {
         $toggle.classList.remove("toggled");
       }, 400);
-  
+
       this.mobile_menu_visible = 0;
     } else {
       setTimeout(function() {
         $toggle.classList.add("toggled");
       }, 430);
-  
+
       var $layer = document.createElement("div");
       $layer.setAttribute("class", "close-layer");
-  
+
       if (html.querySelectorAll(".main-panel")) {
         document.getElementsByClassName("main-panel")[0].appendChild($layer);
       } else if (html.classList.contains("off-canvas-sidebar")) {
@@ -138,27 +138,26 @@ export class NavbarComponent implements OnInit, OnDestroy {
           .getElementsByClassName("wrapper-full-page")[0]
           .appendChild($layer);
       }
-  
+
       setTimeout(function() {
         $layer.classList.add("visible");
       }, 100);
-  
-      $layer.onclick = () => {
+
+      $layer.onclick = function() {
         //asign a function
         html.classList.remove("nav-open");
         this.mobile_menu_visible = 0;
         $layer.classList.remove("visible");
-        setTimeout(() => {
+        setTimeout(function() {
           $layer.remove();
           $toggle.classList.remove("toggled");
         }, 400);
-      };
-  
+      }.bind(this);
+
       html.classList.add("nav-open");
       this.mobile_menu_visible = 1;
     }
   }
-  
 
   getTitle() {
     var titlee = this.location.prepareExternalUrl(this.location.path());
@@ -166,15 +165,15 @@ export class NavbarComponent implements OnInit, OnDestroy {
       titlee = titlee.slice(1);
     }
 
-    for (var item = 0; item < this.listTitles!.length; item++) {
-      if (this.listTitles![item].path === titlee) {
-        return this.listTitles![item].title;
+    for (var item = 0; item < this.listTitles.length; item++) {
+      if (this.listTitles[item].path === titlee) {
+        return this.listTitles[item].title;
       }
     }
     return "Dashboard";
   }
 
-  open(content:any ) {
+  open(content) {
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
