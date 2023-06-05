@@ -17,10 +17,10 @@
                     <td>{{user.lastName}}</td>
                     <td>{{user.username}}</td>
                     <td style="white-space: nowrap">
-                        <a routerLink="edit/{{user.id}}" class="btn btn-sm btn-primary me-1">Edit</a>
+                        <a routerLink="edit/{{user.id}}" class="btn btn-sm m-3 btn-primary me-1">Edit</a>
                         <button (click)="deleteUser(user.id)" class="btn btn-sm btn-danger" style="width: 58px" [disabled]="user.isDeleting">
                             <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
-                            <span *ngIf="!user.isDeleting">Delete</span>
+                            <span *ngIf="!user.isDeleting ">Delete</span>
                         </button>
                     </td>
                 </tr>
