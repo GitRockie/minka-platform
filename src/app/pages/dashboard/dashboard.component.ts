@@ -10,7 +10,9 @@ export class DashboardComponent implements OnInit {
   public ctx? : any;
   public datasets: any;
   public data: any;
-  public myChartData? : any;
+
+  public myChartData?:  Chart<"line">;
+  
   public clicked: boolean = true;
   public clicked1: boolean = false;
   public clicked2: boolean = false;
@@ -36,7 +38,8 @@ export class DashboardComponent implements OnInit {
       },
       responsive: true,
       scales: {
-        yAxes: [{
+        y: {
+          beginAtZero: true,
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -49,9 +52,10 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#2380f7"
           }
-        }],
+        },
 
-        xAxes: [{
+        x: {
+          beginAtZero: true,
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -62,7 +66,7 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#2380f7"
           }
-        }]
+        }
       }
     };
 
@@ -84,7 +88,7 @@ export class DashboardComponent implements OnInit {
       },
       responsive: true,
       scales: {
-        yAxes: [{
+        y: {
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -97,9 +101,9 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9a9a9a"
           }
-        }],
+        },
 
-        xAxes: [{
+        x: {
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -110,7 +114,7 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9a9a9a"
           }
-        }]
+        }
       }
     };
 
@@ -132,7 +136,7 @@ export class DashboardComponent implements OnInit {
       },
       responsive: true,
       scales: {
-        yAxes: [{
+        y: {
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -145,9 +149,9 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9a9a9a"
           }
-        }],
+        },
 
-        xAxes: [{
+        x: {
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -158,7 +162,7 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9a9a9a"
           }
-        }]
+        }
       }
     };
 
@@ -180,7 +184,7 @@ export class DashboardComponent implements OnInit {
       },
       responsive: true,
       scales: {
-        yAxes: [{
+        y:{
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -193,9 +197,9 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#ff8a76"
           }
-        }],
+        },
 
-        xAxes: [{
+        x: {
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -206,7 +210,7 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#ff8a76"
           }
-        }]
+        }
       }
     };
 
@@ -228,7 +232,7 @@ export class DashboardComponent implements OnInit {
       },
       responsive: true,
       scales: {
-        yAxes: [{
+        y: {
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -241,9 +245,9 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9e9e9e"
           }
-        }],
+        },
 
-        xAxes: [{
+        x: {
           barPercentage: 1.6,
           gridLines: {
             drawBorder: false,
@@ -254,7 +258,7 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9e9e9e"
           }
-        }]
+        }
       }
     };
 
@@ -277,7 +281,7 @@ export class DashboardComponent implements OnInit {
       },
       responsive: true,
       scales: {
-        yAxes: [{
+        y: {
 
           gridLines: {
             drawBorder: false,
@@ -290,9 +294,9 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9e9e9e"
           }
-        }],
+        },
 
-        xAxes: [{
+        x: {
 
           gridLines: {
             drawBorder: false,
@@ -303,10 +307,10 @@ export class DashboardComponent implements OnInit {
             padding: 20,
             fontColor: "#9e9e9e"
           }
-        }]
+        }
       }
     };
-
+     /*RedLine*/
     this.canvas = document.getElementById("chartLineRed");
     this.ctx = this.canvas.getContext("2d");
 
@@ -343,7 +347,7 @@ export class DashboardComponent implements OnInit {
       options: gradientChartOptionsConfigurationWithTooltipRed
     });
 
-
+    /*Green*/
     this.canvas = document.getElementById("chartLineGreen");
     this.ctx = this.canvas.getContext("2d");
 
@@ -393,7 +397,7 @@ export class DashboardComponent implements OnInit {
     this.data = this.datasets[0];
 
 
-
+  /*chartBig1*/
     this.canvas = document.getElementById("chartBig1");
     this.ctx = this.canvas.getContext("2d");
 
@@ -429,7 +433,7 @@ export class DashboardComponent implements OnInit {
     };
     this.myChartData = new Chart(this.ctx, config);
 
-
+     /*Country Chart*/
     this.canvas = document.getElementById("CountryChart");
     this.ctx  = this.canvas.getContext("2d");
     var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
@@ -439,7 +443,7 @@ export class DashboardComponent implements OnInit {
     gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
 
 
-    const myChart1 = new Chart(this.ctx, {
+    var myChart3 = new Chart(this.ctx, {
       type: 'bar',
      
   
@@ -462,7 +466,7 @@ export class DashboardComponent implements OnInit {
 
   }
   public updateOptions() {
-    this.myChartData.data.datasets[0].data = this.data;
-    this.myChartData.update();
+    this.myChartData!.data.datasets[0].data = this.data;
+    this.myChartData!.update();
   }
 }
