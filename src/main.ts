@@ -1,3 +1,5 @@
+/// <reference types="@angular/localize" />
+
 /*
  =========================================================
  * Black Dashboard Angular - v1.3.0

@@ -13,6 +13,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ComponentsModule } from "./components/components.module";
     NgbModule,
     RouterModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    NgChartsModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [],
