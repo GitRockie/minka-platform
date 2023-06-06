@@ -1,0 +1,15 @@
+{
+    "NAVIGATION": {
+      "toggle": "Alternar navegación",
+      "search": "Buscar",
+      "notifications": "Notificaciones",
+      "profile": "Perfil",
+      "settings": "Configuración",
+      "logout": "Cerrar sesión"
+    },
+    "MODAL": {
+      "search": "BUSCAR",
+      "close": "Cerrar"
+    }
+  }
+  

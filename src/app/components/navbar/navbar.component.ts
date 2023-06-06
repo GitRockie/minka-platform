@@ -3,6 +3,8 @@ import { ROUTES } from "../sidebar/sidebar.component";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: "app-navbar",
@@ -21,6 +23,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   closeResult?: string;
 
   constructor(
+    private translate: TranslateService,
     location: Location,
     private element: ElementRef,
     private router: Router,
@@ -28,6 +31,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {
     this.location = location;
     this.sidebarVisible = false;
+
+    translate.setDefaultLang('en');
+    translate.use('es');
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {
