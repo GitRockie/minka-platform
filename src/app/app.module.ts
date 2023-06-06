@@ -14,6 +14,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { NgChartsModule } from 'ng2-charts';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { NgChartsModule } from 'ng2-charts';
     RouterModule,
     AppRoutingModule,
     ToastrModule.forRoot(),
-    NgChartsModule
+    NgChartsModule,
+    MatIconModule
   ],
   declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
   providers: [],
