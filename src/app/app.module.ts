@@ -17,7 +17,6 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { NgChartsModule } from 'ng2-charts';
-import {MatIconModule} from '@angular/material/icon';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -35,7 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     ToastrModule.forRoot(),
     NgChartsModule,
-    MatIconModule,
+   
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
