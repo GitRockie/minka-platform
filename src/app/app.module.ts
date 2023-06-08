@@ -17,6 +17,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from "./account";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
@@ -33,6 +34,7 @@ import { HomeComponent } from "./pages/home";
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgbCarouselModule,
     ComponentsModule,
     NgbModule,
     RouterModule,

@@ -3,6 +3,7 @@ import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTT
 import { Observable, of, throwError } from 'rxjs';
 import { delay, materialize, dematerialize } from 'rxjs/operators';
 
+const usersKey = 'minka-platform-users';
 let users = [{ id: 1, firstName: 'Jason', lastName: 'Watmore', username: 'test', password: 'test' }];
 
 @Injectable()

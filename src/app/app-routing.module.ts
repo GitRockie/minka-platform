@@ -11,20 +11,25 @@ import { LoginComponent, RegisterComponent } from "./account";
 
 const routes: Routes = [
   {
-    path: "", component: LoginComponent
+    path: "account/login", component: LoginComponent
   },
+  { path: 'account/register', component: RegisterComponent },
   {
     path: "",
     component: AdminLayoutComponent,
     children: [
       {
-        path: "",
+        path: "", // Empty path to load the HomeComponent
+        component: HomeComponent
+      },
+      {
+        path: "dashboard",
         loadChildren: () => import ("./layouts/admin-layout/admin-layout.module").then(m => m.AdminLayoutModule)
       }
     ]
   }, 
-  { path: 'account/login', component: LoginComponent },
-  { path: 'account/register', component: RegisterComponent },
+  
+  
   {
     path: "**",
     redirectTo: ""
