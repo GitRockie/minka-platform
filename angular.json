@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/scss/minka-platform.scss"
+              "src/assets/scss/minka-platform.scss",
+              "src/assets/css/nucleo-icons.css"
             ],
             "scripts": []
           },

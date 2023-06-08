@@ -6,10 +6,12 @@ import { Routes, RouterModule } from "@angular/router";
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { HomeComponent } from "./pages/home";
 import { LoginComponent, RegisterComponent } from "./account";
+import { DashboardComponent } from "./pages/dashboard";
 
 
 
 const routes: Routes = [
+  { path: '', component: AdminLayoutComponent, pathMatch: 'full'   },
   {
     path: "account/login", component: LoginComponent
   },
