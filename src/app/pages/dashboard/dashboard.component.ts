@@ -310,6 +310,12 @@ export class DashboardComponent implements OnInit {
         }
       }
     };
+
+    var chartlabels1 = ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    this.data = [
+      80, 100, 60, 84, 120, 80
+    ];
+
      /*RedLine*/
     this.canvas = document.getElementById("chartLineRed");
     this.ctx = this.canvas.getContext("2d");
@@ -320,11 +326,14 @@ export class DashboardComponent implements OnInit {
     gradientStroke.addColorStop(0.4, 'rgba(233,32,16,0.0)');
     gradientStroke.addColorStop(0, 'rgba(233,32,16,0)'); //red colors
 
-    var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
-      datasets: [{
-        label: "Data",
+    const config1: ChartConfiguration<'line'> = {
+      type: 'line',
+      data: {
+        labels: chartlabels1,
+        datasets: [{
+        label: "My second dataset",
         fill: true,
+        tension: 0.4,
         backgroundColor: gradientStroke,
         borderColor: '#ec250d',
         borderWidth: 2,
@@ -337,16 +346,16 @@ export class DashboardComponent implements OnInit {
         pointHoverRadius: 4,
         pointHoverBorderWidth: 15,
         pointRadius: 4,
-        data: [80, 100, 70, 80, 120, 80],
+        data: this.data,
       }]
-    };
+    },
+    options: gradientChartOptionsConfigurationWithTooltipRed};
 
-    var myChart = new Chart(this.ctx, {
-      type: 'line',
-      data: data,
-      options: gradientChartOptionsConfigurationWithTooltipRed
-    });
+    this.myChartData = new Chart(this.ctx, config1);
 
+    var chart_labels4 = ['JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    this.data = [
+      90, 27, 60, 12, 80, 30];
     /*Green*/
     this.canvas = document.getElementById("chartLineGreen");
     this.ctx = this.canvas.getContext("2d");
@@ -358,33 +367,32 @@ export class DashboardComponent implements OnInit {
     gradientStroke.addColorStop(0.4, 'rgba(66,134,121,0.0)'); //green colors
     gradientStroke.addColorStop(0, 'rgba(66,134,121,0)'); //green colors
 
-    var data = {
-      labels: ['JUL', 'AUG', 'SEP', 'OCT', 'NOV'],
-      datasets: [{
-        label: "My First dataset",
-        fill: true,
-        backgroundColor: gradientStroke,
-        borderColor: '#00d6b4',
-        borderWidth: 2,
-        borderDash: [],
-        borderDashOffset: 0.0,
-        pointBackgroundColor: '#00d6b4',
-        pointBorderColor: 'rgba(255,255,255,0)',
-        pointHoverBackgroundColor: '#00d6b4',
-        pointBorderWidth: 20,
-        pointHoverRadius: 4,
-        pointHoverBorderWidth: 15,
-        pointRadius: 4,
-        data: [90, 27, 60, 12, 80],
+    const config4: ChartConfiguration<'line'> = {
+      type: 'line',
+      data: {
+        labels: chart_labels4,
+        datasets: [{
+          label: "My fourth dataset",
+          fill: true,
+          tension: 0.5,
+          backgroundColor: gradientStroke,
+          borderColor: '#00d6b4',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: '#00d6b4',
+          pointBorderColor: 'rgba(255,255,255,0)',
+          pointHoverBackgroundColor: '#00d6b4',
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: this.data,
       }]
+    },
     };
 
-    var myChart = new Chart(this.ctx, {
-      type: 'line',
-      data: data,
-      options: gradientChartOptionsConfigurationWithTooltipGreen
-
-    });
+    this.myChartData = new Chart(this.ctx, config4);
 
 
 
@@ -414,6 +422,7 @@ export class DashboardComponent implements OnInit {
         datasets: [{
           label: "My First dataset",
           fill: true,
+          tension: 0.4,
           backgroundColor: gradientStroke,
           borderColor: '#ec250d',
           borderWidth: 2,
@@ -451,7 +460,6 @@ export class DashboardComponent implements OnInit {
         labels: ['USA', 'GER', 'AUS', 'UK', 'RO', 'BR'],
         datasets: [{
           label: "Countries",
-         
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
           borderColor: '#1f8ef1',
