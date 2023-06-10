@@ -1,10 +1,11 @@
 <div class="wrapper">
-<div class="container col-md-6">
-   
-        <div class="row">
-          <div *ngIf="error" class="alert alert-danger">{{error}}</div>
-          <div class="card m-5">
-              <div class=" card mt-2 mb-2">
+<div class="container col-md-6 offset-md-3 mt-5">
+  <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+       
+          
+          <div *ngIf="success" class="alert alert-success">{{success}}</div>
+          <div class="card">
+            
                 <div class=" card-header"><h1 class=" title">Login</h1></div>
                 <div class=" card-body">
                   <form [formGroup]="form" (ngSubmit)="onSubmit()">
@@ -18,13 +19,13 @@
                             [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
                             placeholder="Username"
                             type="text"
-                           
+                            formControlName="username"
                           />
                           <div *ngIf="submitted && f.username.errors" class="invalid-feedback" >
                             <div *ngIf="f.username.errors.required">Username is required</div>
                           </div>
                      
-                         </div>
+                        </div>
                       </div>
                       <div class=" col-md-12">
                         <div class=" form-group">
@@ -39,19 +40,18 @@
                     </div>
                    
                
-                 
+                    <div class=" card-footer">
+                      <button [disabled]="loading" class=" btn btn-fill btn-danger" type="submit">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
+                        Login
+                        </button>
+                        <a routerLink="../register" class="btn btn-link">Register</a>
+                    </div>
                   </form>
                 </div>
-                <div class=" card-footer">
-                  <button [disabled]="loading" class=" btn btn-fill btn-danger" type="submit">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm me-1"></span>
-                    Login
-                    </button>
-                    <a routerLink="../register" class="btn btn-link">Register</a>
-                </div>
-              </div>
+                
+              
             </div>
-        </div>
-      
+    
 </div>
 </div>

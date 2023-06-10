@@ -1,22 +1,21 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { HomeComponent } from "./pages/home";
 import { LoginComponent, RegisterComponent } from "./account";
-import { DashboardComponent } from "./pages/dashboard";
+import { HomeComponent } from "./pages/home";
+import { AuthGuard } from "./_helpers";
 
 
 
 const routes: Routes = [
-  { path: '', component: AdminLayoutComponent, pathMatch: 'full'   },
-  {
-    path: "account/login", component: LoginComponent
-  },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard], 
+},
+  { path: 'account/login', component: LoginComponent },
   { path: 'account/register', component: RegisterComponent },
-  {
+  /*{
     path: "",
     component: AdminLayoutComponent,
     children: [
@@ -29,7 +28,8 @@ const routes: Routes = [
         loadChildren: () => import ("./layouts/admin-layout/admin-layout.module").then(m => m.AdminLayoutModule)
       }
     ]
-  }, 
+  }, */
+  
   
   
   {

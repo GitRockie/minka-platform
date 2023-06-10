@@ -4,10 +4,14 @@ import { Component } from "@angular/core";
 @Component({
   selector: "ng-carousel",
   templateUrl: "./ng-carousel.component.html",
+  styleUrls: ["./ng-carousel.component.css"]
   
 })
 export class NgCarouselComponent  {
-
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
- 
+  images = [
+    "assets/img/landingMinka.jpg",
+    "assets/img/eolicaIndustry.jpg",
+    "assets/img/team-up.jpg",
+    "https://www.youtube.com/watch?v=BH9B_J9HNBs"
+  ];
 }
