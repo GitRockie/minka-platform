@@ -1,0 +1,103 @@
+@use "sass:math";
+/*
+ =========================================================
+ * Black Dashboard Angular - v1.3.0
+ =========================================================
+
+ * Product Page: https://www.creative-tim.com/product/minka-platform-angular
+ * Copyright 2020 Creative Tim (https://www.creative-tim.com)
+ * Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+ =========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+
+ // Core
+
+ @import "minka-platform/custom/functions";
+ @import "minka-platform/bootstrap/functions";
+ 
+ @import "minka-platform/custom/variables";
+ @import "minka-platform/bootstrap/variables";
+ 
+ @import "minka-platform/custom/mixins";
+ @import "minka-platform/bootstrap/mixins";
+ 
+  // Bootstrap components
+ 
+ @import "minka-platform/bootstrap/root";
+ @import "minka-platform/bootstrap/reboot";
+ @import "minka-platform/bootstrap/type";
+ @import "minka-platform/bootstrap/images";
+ @import "minka-platform/bootstrap/code";
+ @import "minka-platform/bootstrap/grid";
+ @import "minka-platform/bootstrap/tables";
+ @import "minka-platform/bootstrap/forms";
+ @import "minka-platform/bootstrap/buttons";
+ @import "minka-platform/bootstrap/transitions";
+ @import "minka-platform/bootstrap/dropdown";
+ @import "minka-platform/bootstrap/button-group";
+ @import "minka-platform/bootstrap/input-group";
+ @import "minka-platform/bootstrap/custom-forms";
+ @import "minka-platform/bootstrap/nav";
+ @import "minka-platform/bootstrap/navbar";
+ @import "minka-platform/bootstrap/card";
+ @import "minka-platform/bootstrap/breadcrumb";
+ @import "minka-platform/bootstrap/pagination";
+ @import "minka-platform/bootstrap/badge";
+ @import "minka-platform/bootstrap/jumbotron";
+ @import "minka-platform/bootstrap/alert";
+ @import "minka-platform/bootstrap/progress";
+ @import "minka-platform/bootstrap/media";
+ @import "minka-platform/bootstrap/list-group";
+ @import "minka-platform/bootstrap/close";
+ @import "minka-platform/bootstrap/modal";
+ @import "minka-platform/bootstrap/tooltip";
+ @import "minka-platform/bootstrap/popover";
+ @import "minka-platform/bootstrap/carousel";
+ @import "minka-platform/bootstrap/utilities";
+ @import "minka-platform/bootstrap/print";
+ 
+  // Custom components
+ 
+  @import "minka-platform/custom/alerts.scss";
+  @import "minka-platform/custom/buttons.scss";
+  @import "minka-platform/custom/dropdown.scss";
+  @import "minka-platform/custom/footer.scss";
+  @import "minka-platform/custom/forms.scss";
+  @import "minka-platform/custom/images.scss";
+  @import "minka-platform/custom/modal.scss";
+  @import "minka-platform/custom/navbar.scss";
+  @import "minka-platform/custom/type.scss";
+  @import "minka-platform/custom/tables";
+  @import "minka-platform/custom/checkboxes-radio";
+  @import "minka-platform/custom/fixed-plugin";
+  @import "minka-platform/custom/sidebar-and-main-panel.scss";
+  @import "minka-platform/custom/misc.scss";
+  @import "minka-platform/custom/rtl.scss";
+  @import "minka-platform/custom/input-group.scss";
+ 
+ 
+  // Vendor / Plugins
+ 
+
+ 
+ // light mode
+ 
+ @import "minka-platform/custom/white-content.scss";
+ 
+ // Cards
+ 
+ @import 'minka-platform/custom/card';
+ @import "minka-platform/custom/cards/card-chart";
+ @import "minka-platform/custom/cards/card-map";
+ @import "minka-platform/custom/cards/card-user";
+ @import "minka-platform/custom/cards/card-task";
+ @import "minka-platform/custom/cards/card-plain";
+ 
+ // Angular Differences
+ 
+ @import "minka-platform/angular-differences/angular-differences"
+ 

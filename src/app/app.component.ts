@@ -1,24 +1,37 @@
-import { Component } from '@angular/core';
-import { NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-
+import { Component } from "@angular/core";
+import { Router } from '@angular/router';
 import { AccountService } from './_services';
 import { User } from './_models';
-import { AlertComponent } from './_components/alert.component';
-
 @Component({
-    selector: 'app-root', templateUrl: 'app.component.html',
-    standalone: true,
-    imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent]
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-    user?: User | null;
+  [x: string]: any;
+  user?: User | null;
 
-    constructor(private accountService: AccountService) {
-        this.accountService.user.subscribe(x => this.user = x);
-    }
+  constructor(private accountService: AccountService) {
+    this.accountService.user.subscribe(x => this.user = x);
+}
+login() {
+    this.accountService.login('user', 'password')
+        .subscribe({
+            next: () => {
+                // get return url from query parameters or default to home page
+                const returnUrl = '/admin';
+                this.router.navigateByUrl(returnUrl);
+            },
+            error: error => {
+                this.error = error;
+                this.loading = false;
+            }
+        });
+}
 
-    logout() {
-        this.accountService.logout();
-    }
+logout() {
+    this.accountService.logout();
+}
+
+
 }

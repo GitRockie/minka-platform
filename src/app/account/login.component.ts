@@ -1,27 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { NgClass, NgIf } from '@angular/common';
-import { Router, ActivatedRoute, RouterLink } from '@angular/router';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AccountService, AlertService } from '@app/_services'
+import { AccountService } from '@app/_services'
 
-@Component({
-    templateUrl: 'login.component.html',
-    standalone: true,
-    imports: [ReactiveFormsModule, NgClass, NgIf, RouterLink]
-})
+@Component({ templateUrl: 'login.component.html' })
 export class LoginComponent implements OnInit {
     form!: FormGroup;
     loading = false;
     submitted = false;
+    error?: string;
+    success?: string;
 
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private accountService: AccountService,
-        private alertService: AlertService
+        private accountService: AccountService
     ) {
         // redirect to home if already logged in
         if (this.accountService.userValue) {
@@ -34,6 +30,10 @@ export class LoginComponent implements OnInit {
             username: ['', Validators.required],
             password: ['', Validators.required]
         });
+        // show success message after registration
+        if (this.route.snapshot.queryParams.registered) {
+            this.success = '¡Has registrado con exito! Ingrese sus credenciales para iniciar la sesion.';
+        }
     }
 
     // convenience getter for easy access to form fields
@@ -42,8 +42,9 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
 
-        // reset alerts on submit
-        this.alertService.clear();
+        // reset alert on submit
+        this.error = '';
+        this.success = '';
 
         // stop here if form is invalid
         if (this.form.invalid) {
@@ -60,7 +61,7 @@ export class LoginComponent implements OnInit {
                     this.router.navigateByUrl(returnUrl);
                 },
                 error: error => {
-                    this.alertService.error(error);
+                    this.error = error;
                     this.loading = false;
                 }
             });
