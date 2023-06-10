@@ -12,6 +12,6 @@ export class NgCarouselComponent  {
     "assets/img/landingMinka.jpg",
     "assets/img/eolicaIndustry.jpg",
     "assets/img/team-up.jpg",
-    "https://www.youtube.com/watch?v=BH9B_J9HNBs"
+    
   ];
 }

@@ -5,9 +5,10 @@ import { Routes, RouterModule, CanActivateFn, ActivatedRouteSnapshot, RouterStat
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { LoginComponent, RegisterComponent } from "./account";
-import { HomeComponent } from "./pages/home";
+import { HomeComponent } from "./home";
 import { AuthGuard } from "./_helpers";
-
+import { DashboardComponent } from "./dashboard/dashboard.component";
+import { AdminLayoutModule } from "./layouts/admin-layout/admin-layout.module";
 
 
 

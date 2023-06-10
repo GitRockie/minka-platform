@@ -7,7 +7,7 @@ import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgCarouselComponent } from "./ng-carousel/ng-carousel.component";
+import { NgCarouselComponent } from "../_components/ng-carousel/ng-carousel.component";
 
 
 @NgModule({
