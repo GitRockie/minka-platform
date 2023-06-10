@@ -1,39 +1,40 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule, CanActivateFn, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
-import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { LoginComponent, RegisterComponent } from "./account";
+import { HomeComponent } from "./pages/home";
+import { AuthGuard } from "./_helpers";
+
+
 
 const routes: Routes = [
-  {
-    path: "",
-    redirectTo: "dashboard",
-    pathMatch: "full"
-  },
-  {
+  { path: '', component: HomeComponent, canActivate: [AuthGuard], 
+},
+  { path: 'account/login', component: LoginComponent },
+  { path: 'account/register', component: RegisterComponent },
+  /*{
     path: "",
     component: AdminLayoutComponent,
     children: [
       {
-        path: "",
+        path: "", // Empty path to load the HomeComponent
+        component: HomeComponent
+      },
+      {
+        path: "dashboard",
         loadChildren: () => import ("./layouts/admin-layout/admin-layout.module").then(m => m.AdminLayoutModule)
       }
     ]
-  }, {
-    path: "",
-    component: AuthLayoutComponent,
-    children: [
-      {
-        path: "",
-        loadChildren: () => import ("./layouts/auth-layout/auth-layout.module").then(m => m.AuthLayoutModule)
-      }
-    ]
-  },
+  }, */
+  
+  
+  
   {
     path: "**",
-    redirectTo: "dashboard"
+    redirectTo: ""
   }
 ];
 

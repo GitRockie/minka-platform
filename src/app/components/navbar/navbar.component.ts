@@ -4,6 +4,8 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
+
+
 @Component({
   selector: "app-navbar",
   templateUrl: "./navbar.component.html",
@@ -21,6 +23,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   closeResult?: string;
 
   constructor(
+    
     location: Location,
     private element: ElementRef,
     private router: Router,
@@ -28,6 +31,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ) {
     this.location = location;
     this.sidebarVisible = false;
+
   }
   // function that adds color white/transparent to the navbar on resize (this is for the collapse)
    updateColor = () => {

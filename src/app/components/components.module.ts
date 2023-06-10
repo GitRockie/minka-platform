@@ -6,10 +6,13 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { FooterComponent } from "./footer/footer.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { SidebarComponent } from "./sidebar/sidebar.component";
+import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgCarouselComponent } from "./ng-carousel/ng-carousel.component";
+
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule],
-  declarations: [FooterComponent, NavbarComponent, SidebarComponent],
-  exports: [FooterComponent, NavbarComponent, SidebarComponent]
+  imports: [CommonModule, RouterModule, NgbModule, NgbCarouselModule],
+  declarations: [FooterComponent, NavbarComponent, SidebarComponent,NgCarouselComponent],
+  exports: [FooterComponent, NavbarComponent, SidebarComponent, NgCarouselComponent]
 })
 export class ComponentsModule {}
