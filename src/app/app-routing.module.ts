@@ -10,11 +10,25 @@ import { AuthGuard } from "./_helpers";
 
 
 
+
+
 const routes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard], 
-},
+  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: '', component: HomeComponent },
   { path: 'account/login', component: LoginComponent },
   { path: 'account/register', component: RegisterComponent },
+{
+  path: "admin",
+  component: AdminLayoutComponent,
+
+  children: [
+    {
+      path: "",
+      loadChildren: () => import ("./layouts/admin-layout/admin-layout.module").then(m => m.AdminLayoutModule)
+    }
+  ]
+},
+  
   /*{
     path: "",
     component: AdminLayoutComponent,
@@ -34,7 +48,7 @@ const routes: Routes = [
   
   {
     path: "**",
-    redirectTo: ""
+    redirectTo: "home"
   }
 ];
 

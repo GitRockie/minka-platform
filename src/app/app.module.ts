@@ -21,6 +21,7 @@ import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.compon
 import { RegisterComponent } from "./account";
 import { HomeComponent } from "./pages/home";
 import { LoginComponent } from "./account";
+import { AlertComponent } from "./_components";
 
 
 
@@ -40,11 +41,12 @@ import { LoginComponent } from "./account";
     AppRoutingModule,
     ToastrModule.forRoot(),
     NgChartsModule,
+    
    
     
   
   ],
-  declarations: [AppComponent, AdminLayoutComponent, HomeComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, AdminLayoutComponent, HomeComponent, LoginComponent, RegisterComponent, AlertComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },  // provider used to create fake backend

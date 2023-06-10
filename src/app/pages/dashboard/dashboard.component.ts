@@ -1,11 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import {Chart, ChartConfiguration} from 'chart.js';
+import { User } from '@app/_models';
+import { AccountService } from '@app/_services';
 
 @Component({
   selector: "app-dashboard",
   templateUrl: "dashboard.component.html"
 })
 export class DashboardComponent implements OnInit {
+
+  user: User | null;
   public canvas : any;
   public ctx? : any;
   public datasets: any;
@@ -17,7 +21,9 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
   public clicked2: boolean = false;
 
-  constructor() {}
+  constructor(private accountService: AccountService) {
+    this.user = this.accountService.userValue;
+  }
 
   ngOnInit() {
     var gradientChartOptionsConfigurationWithTooltipBlue: any = {

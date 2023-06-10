@@ -1,7 +1,6 @@
 <!--The content below is only a placeholder and can be replaced.-->
 
-<!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark px-3" >
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark px-3" >
     <div class="logo align-items-center ">
     
       <div class="logo-img d-flex m-1 mt-1 p-1">
@@ -19,18 +18,22 @@
     <div class="d-flex ml-auto">
        
         <a routerLink="/dashboard" class="btn btn-link nav-item nav-link disabled ">Dashboard</a>
-      <button routerLink="/account/login" class="btn btn-fill btn-success" type="submit" (click)="login()">
+      <button routerLink="/account/login" class="btn btn-fill btn-success" type="submit" (click)="logout()">
         Iniciar 
       </button>
       
     </div>
-  </nav>
+  </nav> -->
+
 
   
-<!-- main app container -->
-<div class="container">
+<!-- <div class="container">
+
+  <alert></alert>
   <router-outlet></router-outlet>
   <app-footer></app-footer>
-</div>
+</div> -->
+<router-outlet></router-outlet>
+
 
 ```
