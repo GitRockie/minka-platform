@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         });
         // show success message after registration
         if (this.route.snapshot.queryParams.registered) {
-            this.success = 'Registration successful';
+            this.success = '¡Has registrado con exito! Ingrese sus credenciales para iniciar la sesion.';
         }
     }
 

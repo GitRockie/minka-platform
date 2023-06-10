@@ -13,7 +13,7 @@
                     
                       <div class=" col-md-12">
                         <div class=" form-group">
-                          <label class="form-label"> Username </label>
+                          <label class="form-label"> Nombre de usuario </label>
                           <input
                             class=" form-control"
                             [ngClass]="{ 'is-invalid': submitted && f.username.errors }"
@@ -29,7 +29,7 @@
                       </div>
                       <div class=" col-md-12">
                         <div class=" form-group">
-                          <label class="form-label"> Password</label>
+                          <label class="form-label"> Contraseña</label>
                           <input type="password" formControlName="password" 
                           placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
