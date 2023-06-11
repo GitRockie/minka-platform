@@ -1,4 +1,5 @@
 <!-- nav -->
+
 <nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="user">
   <div class="logo align-items-center ">
   
@@ -16,14 +17,15 @@
     </div>
   <div class="d-flex ml-auto">
      
-      <a routerLink="/" class="btn btn-link nav-item nav-link  ">Home</a>
-    <button routerLink="/account/login" class="btn btn-fill btn-success" type="submit" (click)="logout()">
+    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+    <button routerLink="/account/login" class="btn btn-fill btn-success" type="submit" >
       Iniciar 
     </button>
     
+    
   </div>
 </nav>
-
 <!-- main app container -->
 <div class="container">
   <alert></alert>
