@@ -25,6 +25,7 @@ import { fakeBackendInterceptor } from '@app/_helpers';
 import { AppComponent } from '@app/app.component';
 import { jwtInterceptor, errorInterceptor } from '@app/_helpers';
 import { APP_ROUTES } from '@app/app.routes';
+import { ToastrService } from 'ngx-toastr';
 
 /*if (environment.production) {
   enableProdMode();
@@ -33,6 +34,7 @@ import { APP_ROUTES } from '@app/app.routes';
 bootstrapApplication(AppComponent, {
   providers: [
       provideRouter(APP_ROUTES),
+      ToastrService,
       provideHttpClient(
           withInterceptors([
               jwtInterceptor, 

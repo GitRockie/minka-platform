@@ -1,10 +1,11 @@
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
-import { NgClass, NgFor, NgIf } from "@angular/common";
+import { NgClass, NgIf, NgFor } from "@angular/common";
 import { Location } from "@angular/common";
-import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
 
-import { ADMIN_ROUTES } from "@app/layouts/admin-layout/admin.routes.ts";
+import { RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute  } from '@angular/router';
+import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle,  } from '@ng-bootstrap/ng-bootstrap';
+
+
 import { ROUTES } from "../sidebar/sidebar.component";
 
 
@@ -32,7 +33,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     private router: Router,
     location: Location,
     private element: ElementRef,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private route: ActivatedRoute
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -180,7 +182,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
         return this.listTitles![item].title;
       }
     }
-    return "Dashboard";
+     // Get the last segment of the URL after the last slash
+  const segments = titlee.split('/');
+  const title = segments[segments.length - 1];
+  // Remove the protocol, host, and base path from the title
+  
+  const cleanTitle = title.replace("/", '');
+
+    return cleanTitle   ;
   }
 
   open(content: any) {

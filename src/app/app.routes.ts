@@ -1,4 +1,4 @@
-import { Route } from "@angular/router";
+import {Routes } from "@angular/router";
 
 
 import { LoginComponent, RegisterComponent } from './account';
@@ -15,8 +15,8 @@ const usersRoutes = () => import('./users/users.routes').then(x => x.USERS_ROUTE
 
 
 
-export const APP_ROUTES: Route[]= [
-    { path: '', component: HomeComponent, canActivate: [authGuard]},
+export const APP_ROUTES: Routes= [
+    { path: '', component: HomeComponent},
 
     { path: 'users', loadChildren: usersRoutes, canActivate: [authGuard] },
     
@@ -27,6 +27,7 @@ export const APP_ROUTES: Route[]= [
     {
         path: "",
         component: AdminLayoutComponent,
+        canActivate: [authGuard],
         children: [
      
           {

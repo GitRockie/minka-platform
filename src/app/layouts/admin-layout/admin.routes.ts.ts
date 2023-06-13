@@ -1,4 +1,4 @@
-import { Route } from "@angular/router";
+import { Routes } from "@angular/router";
 
 import { DashboardComponent } from "../../pages/dashboard";
 import { IconsComponent } from "../../pages/icons/icons.component";
@@ -11,9 +11,9 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 
 
 
-export const ADMIN_ROUTES: Route[] = [
-  
+export const ADMIN_ROUTES: Routes = [
   { path: "", component: DashboardComponent },
+  { path: "dashboard", component: DashboardComponent },
   { path: "icons", component: IconsComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "user", component: UserComponent },

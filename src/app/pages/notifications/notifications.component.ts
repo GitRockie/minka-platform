@@ -1,12 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import { ToastrModule, ToastrService, } from 'ngx-toastr';
+import { ToastrModule, ToastrService} from 'ngx-toastr';
+
 import { NgbAlert } from "@ng-bootstrap/ng-bootstrap";
 import { NgClass, NgFor, NgIf } from "@angular/common";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 @Component({
   selector: "app-notifications",
   standalone: true,
-  imports: [ToastrModule, NgClass, NgFor, NgIf, RouterOutlet, RouterLink, RouterLinkActive, NgbAlert, ],
+  imports: [ToastrModule, NgClass, NgFor, NgIf, RouterOutlet, RouterLink, RouterLinkActive, NgbAlert,  ],
   templateUrl: "notifications.component.html"
 })
 export class NotificationsComponent implements OnInit {
