@@ -6,7 +6,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 @Component({
   selector: "app-notifications",
   standalone: true,
-  imports: [ToastrModule, NgClass, NgFor, NgIf, RouterOutlet, RouterLink, RouterLinkActive, NgbAlert, ToastrModule],
+  imports: [ToastrModule, NgClass, NgFor, NgIf, RouterOutlet, RouterLink, RouterLinkActive, NgbAlert, ],
   templateUrl: "notifications.component.html"
 })
 export class NotificationsComponent implements OnInit {
