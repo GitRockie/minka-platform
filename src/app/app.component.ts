@@ -6,10 +6,11 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AccountService} from './_services';
 import { User } from './_models';
 import { AlertComponent } from "./_components";
+import { FooterComponent } from "./components";
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent],
+  imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent, FooterComponent],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })

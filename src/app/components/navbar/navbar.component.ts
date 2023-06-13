@@ -2,15 +2,17 @@ import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
 import { NgClass, NgFor, NgIf } from "@angular/common";
 import { Location } from "@angular/common";
 import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons, NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
-import { MENU_ROUTES } from "../sidebar/sidebar.component";
+import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
+
+import { ADMIN_ROUTES } from "@app/layouts/admin-layout/admin.routes.ts";
+import { ROUTES } from "../sidebar/sidebar.component";
 
 
 
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse],
+  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle ],
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
@@ -49,7 +51,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
    };
   ngOnInit() {
     window.addEventListener("resize", this.updateColor);
-    this.listTitles = MENU_ROUTES.filter(listTitle => listTitle);
+    this.listTitles = ROUTES.filter(listTitle => listTitle);
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName("navbar-toggler")[0];
     this.router.events.subscribe(event => {

@@ -1,10 +1,15 @@
 import { Component, OnInit } from "@angular/core";
 import {Chart, ChartConfiguration} from 'chart.js';
+import { NgChartsModule } from 'ng2-charts';
 import { User } from '@app/_models';
 import { AccountService } from '@app/_services';
+import { NgClass, NgFor, NgIf } from "@angular/common";
+import {  RouterLink } from '@angular/router';
 
 @Component({
   selector: "app-dashboard",
+  standalone: true,
+  imports: [ NgClass, NgIf, NgFor, RouterLink, NgChartsModule ],
   templateUrl: "dashboard.component.html"
 })
 export class DashboardComponent implements OnInit {
@@ -21,7 +26,9 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
   public clicked2: boolean = false;
 
-  constructor(private accountService: AccountService) {
+  constructor(
+
+    private accountService: AccountService) {
     this.user = this.accountService.userValue;
   }
 
