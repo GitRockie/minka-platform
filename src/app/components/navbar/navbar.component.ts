@@ -1,17 +1,23 @@
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
-import { ROUTES } from "../sidebar/sidebar.component";
+import { NgClass, NgFor, NgIf } from "@angular/common";
 import { Location } from "@angular/common";
-import { Router } from "@angular/router";
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
+import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
+
+import { ADMIN_ROUTES } from "@app/layouts/admin-layout/admin.routes.ts";
+import { ROUTES } from "../sidebar/sidebar.component";
 
 
 
 @Component({
   selector: "app-navbar",
+  standalone: true,
+  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle ],
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+
   private listTitles?: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -23,10 +29,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   closeResult?: string;
 
   constructor(
-    
+    private router: Router,
     location: Location,
     private element: ElementRef,
-    private router: Router,
     private modalService: NgbModal
   ) {
     this.location = location;

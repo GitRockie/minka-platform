@@ -14,16 +14,33 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import { enableProdMode } from "@angular/core";
-import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
-import { AppModule } from "./app/app.module";
+import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 
+// fake backend
+import { fakeBackendInterceptor } from '@app/_helpers';
+
+import { AppComponent } from '@app/app.component';
+import { jwtInterceptor, errorInterceptor } from '@app/_helpers';
+import { APP_ROUTES } from '@app/app.routes';
 
 /*if (environment.production) {
   enableProdMode();
 }*/
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+      provideRouter(APP_ROUTES),
+      provideHttpClient(
+          withInterceptors([
+              jwtInterceptor, 
+              errorInterceptor,
+
+              // fake backend
+              fakeBackendInterceptor
+          ])
+      )
+  ]
+});

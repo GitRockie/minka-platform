@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { NgClass, NgFor, NgIf } from "@angular/common";
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
 
 declare interface RouteInfo {
   path: string;
@@ -8,52 +11,57 @@ declare interface RouteInfo {
 }
 export const ROUTES: RouteInfo[] = [
   {
-    path: "/dashboard",
+    path: "admin/dashboard",
     title: "Dashboard",
     icon: "icon-chart-pie-36",
     class: ""
   },
   {
-    path: "/icons",
+    path: "admin/icons",
     title: "Icons",
     icon: "icon-atom",
     class: ""
   },
+  
   {
-    path: "/maps",
-    title: "Maps",
-    icon: "icon-pin",
-    class: "" },
-  {
-    path: "/notifications",
+    path: "admin/notifications",
     title: "Notifications",
     icon: "icon-bell-55",
     class: ""
   },
 
   {
-    path: "/user",
+    path: "admin/user",
     title: "User Profile",
     icon: "icon-single-02",
-    class: ""
+    class: "  "
   },
   {
-    path: "/tables",
+    path: "admin/tables",
     title: "Table List",
     icon: "icon-puzzle-10",
     class: ""
   },
   {
-    path: "/typography",
+    path: "admin/typography",
     title: "Typography",
     icon: "icon-align-center",
     class: ""
   },
+  {
+    path: "users",
+    title: "Users",
+    icon: "icon-user-run",
+    class: "tim-icons"
+  },
+  
   
 ];
 
 @Component({
   selector: "app-sidebar",
+  standalone: true,
+  imports: [RouterLinkActive, NgClass,NgIf, NgFor, NgIf, RouterOutlet, RouterLink ],
   templateUrl: "./sidebar.component.html",
   styleUrls: ["./sidebar.component.css"]
 })

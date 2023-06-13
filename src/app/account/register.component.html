@@ -1,8 +1,9 @@
+
 <div class="wrapper">
   <div class="container col-md-6 offset-md-3 mt-5">
-    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+  
           <div class="row">
-            <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+           
             <div class="card">
               
                   <div class=" card-header"><h1 class=" title">Registro</h1></div>
@@ -55,7 +56,7 @@
                             placeholder="Password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                 <div *ngIf="f.password.errors.required">Este campo és obligatorio</div>
-                                <div *ngIf="f.password.errors.minlength">Tiene que ser 6 caracteres o más</div>
+                                <div *ngIf="f.password.errors.minlength">El password tiene que ser de 6 caracteres o más</div>
                             </div>
                           </div>
                         </div>

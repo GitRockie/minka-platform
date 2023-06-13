@@ -1,36 +1,34 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
 <!-- nav -->
+<div *ngIf="user"></div>
 <nav class="navbar navbar-expand navbar-dark bg-dark px-3" >
-    <div class="logo align-items-center ">
-    
-      <div class="logo-img d-flex m-1 mt-1 p-1">
-        <a href="https://www.doitminka.com" class="simple-text logo-mini">
-            <img src="./assets/img/logo_minka.png" />
-          </a>
-        </div>
-
-        <div class="logo-text ml-3 mt-2 pl-4 " >
-        <a href="https://www.doitminka.com" class="simple-text logo-normal ">
-          <h3 class="m-0">INK'A</h3>
+  <div class="logo align-items-center ">
+  
+    <div class="logo-img d-flex m-1 mt-1 p-1">
+      <a href="" class="simple-text logo-mini">
+          <img src="../assets/img/logo_minka.png" />
         </a>
       </div>
-      </div>
-    <div class="d-flex ml-auto">
-       
-        <a routerLink="/dashboard" class="btn btn-link nav-item nav-link disabled ">Dashboard</a>
-      <button routerLink="/account/login" class="btn btn-fill btn-success" type="submit" (click)="login()">
-        Iniciar 
-      </button>
-      
-    </div>
-  </nav>
 
-  
+      <div class="logo-text ml-3 mt-2 pl-4 " >
+      <a href="" class="simple-text logo-normal ">
+        <h3 class="m-0">INK'A</h3>
+      </a>
+    </div>
+    </div>
+  <div class="d-flex ml-auto">
+     
+    <a class="nav-item nav-link" routerLink="admin" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
+    <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
+    <button routerLink="../login" class="btn btn-fill btn-success" type="submit" (click)="logout()" >
+      Iniciar 
+    </button>
+    
+    
+  </div>
+</nav>
 <!-- main app container -->
 <div class="container">
+  
   <router-outlet></router-outlet>
   <app-footer></app-footer>
 </div>
-
-```

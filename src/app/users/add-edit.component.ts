@@ -6,10 +6,10 @@ import { first } from 'rxjs/operators';
 
 import { AccountService, AlertService } from '@app/_services';
 
-@Component({ templateUrl: 'user.component.html', standalone: true,
+@Component({ templateUrl: 'add-edit.component.html', standalone: true,
 imports: [NgIf, ReactiveFormsModule, NgClass, RouterLink]
  })
-export class UserComponent implements OnInit {
+export class AddEditComponent implements OnInit {
     form!: FormGroup;
     id?: string;
     title!: string;
