@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { NgClass, NgFor, NgIf } from "@angular/common";
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+
 
 declare interface RouteInfo {
   path: string;
@@ -6,7 +9,7 @@ declare interface RouteInfo {
   icon: string;
   class: string;
 }
-export const ROUTES: RouteInfo[] = [
+export const MENU_ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
     title: "Dashboard",
@@ -54,6 +57,8 @@ export const ROUTES: RouteInfo[] = [
 
 @Component({
   selector: "app-sidebar",
+  standalone: true,
+  imports: [RouterLinkActive, NgClass,NgIf, NgFor, NgIf, RouterOutlet, RouterLink ],
   templateUrl: "./sidebar.component.html",
   styleUrls: ["./sidebar.component.css"]
 })
@@ -63,7 +68,7 @@ export class SidebarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    this.menuItems = MENU_ROUTES.filter(menuItem => menuItem);
   }
   isMobileMenu() {
     if (window.innerWidth > 991) {

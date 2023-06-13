@@ -1,29 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { inject } from '@angular/core';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 import { AccountService } from '@app/_services';
 
-@Injectable({ providedIn: 'root' })
-export class AuthGuard {
-    static canActivateFn: any;
-    constructor(
-        private router: Router,
-        private accountService: AccountService
-    ) { }
-
-    canActivateFn(
-        route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
-    ): boolean | UrlTree {
-        const user = this.accountService.userValue;
-        if (user) {
-            // User is authenticated, allow access
-            return true;
-        }
-
-        // User is not authenticated, redirect to login page with return URL
-        return this.router.createUrlTree(['/account/login'], {
-            queryParams: { returnUrl: state.url }
-        });
+export function authGuard(_route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    const router = inject(Router);
+    const accountService = inject(AccountService);
+    const user = accountService.userValue;
+    if (user) {
+        // authorised so return true
+        return true;
     }
+
+    // not logged in so redirect to login page with the return url
+    router.navigate(['/account/login'], { queryParams: { returnUrl: state.url } });
+    return false;
 }

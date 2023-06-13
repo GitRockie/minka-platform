@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router, ActivatedRoute, RouterLink } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { NgClass, NgIf } from '@angular/common';
 import { first } from 'rxjs/operators';
 
 import { AccountService } from '@app/_services';
 import { AlertService } from '@app/_services';
 
-@Component({ templateUrl: 'register.component.html' })
+@Component({ templateUrl: 'register.component.html', 
+standalone: true,
+imports: [ReactiveFormsModule, NgClass, NgIf, RouterLink] })
+
 export class RegisterComponent implements OnInit {
     form!: FormGroup;
     loading = false;

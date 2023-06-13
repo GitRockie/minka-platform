@@ -1,11 +1,11 @@
 <!-- nav -->
 
-<nav class="navbar navbar-expand navbar-dark bg-dark px-3" *ngIf="user">
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3" >
   <div class="logo align-items-center ">
   
     <div class="logo-img d-flex m-1 mt-1 p-1">
       <a href="https://www.doitminka.com" class="simple-text logo-mini">
-          <img src="./assets/img/logo_minka.png" />
+          <img src="../assets/img/logo_minka.png" />
         </a>
       </div>
 
@@ -17,9 +17,9 @@
     </div>
   <div class="d-flex ml-auto">
      
-    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a class="nav-item nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a>
     <a class="nav-item nav-link" routerLink="/users" routerLinkActive="active">Users</a>
-    <button routerLink="/account/login" class="btn btn-fill btn-success" type="submit" >
+    <button routerLink="../login" class="btn btn-fill btn-success" type="submit" >
       Iniciar 
     </button>
     
@@ -28,6 +28,6 @@
 </nav>
 <!-- main app container -->
 <div class="container">
-  <alert></alert>
+  
   <router-outlet></router-outlet>
 </div>
