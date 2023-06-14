@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { User } from '@app/_models';
 
 import { AccountService } from '@app/_services';
+import { NavbarComponent } from '@app/components';
 
 @Component({ selector:'app-home',
 standalone: true,
-imports: [],
+imports: [NavbarComponent],
 templateUrl: 'home.component.html' })
 export class HomeComponent {
     user: User | null;
