@@ -1,105 +1,53 @@
-<nav class=" navbar navbar-expand-lg navbar-absolute navbar-transparent">
-  <div class=" container-fluid">
-    <div class=" navbar-wrapper">
-      <div class=" navbar-toggle d-inline">
-        <button class=" navbar-toggler" type="button" (click)="sidebarToggle()">
-          <span class=" navbar-toggler-bar bar1"> </span>
-          <span class=" navbar-toggler-bar bar2"> </span>
-          <span class=" navbar-toggler-bar bar3"> </span>
-        </button>
-      </div>
-      <a class=" navbar-brand"> 
-        <p>{{ getTitle() }}</p>  </a>
-    
-    </div>
-   
-    
- 
-    <button
-      aria-label="Toggle navbar"
-      class=" navbar-toggler"
-      (click)="collapse()"
-      [attr.aria-expanded]="!isCollapsed"
-      aria-controls="collapseExample"
-      id="navigation"
-      type="button"
-    >
-    
-      <span class=" navbar-toggler-bar navbar-kebab"> </span>
-      <span class=" navbar-toggler-bar navbar-kebab"> </span>
-      <span class=" navbar-toggler-bar navbar-kebab"> </span>
-    </button>
-    <div class=" navbar-collapse" [ngbCollapse]="isCollapsed" id="navigation">
-      <ul class=" navbar-nav ml-auto">
-        <li class=" search-bar input-group">
-          <button
-            class=" btn btn-link"
-            data-target="#searchModal"
-            data-toggle="modal"
-            (click)="open(content)"
-            id="search-button"
-          >
-            <i class=" tim-icons icon-zoom-split"> </i>
-            <span class=" d-lg-none d-md-block"> Search </span>
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
+  <div class="container">
+      <div class="navbar-translate">
+          <a class="navbar-brand" href="https://www.creative-tim.com">Paper Kit 2 Angular</a>
+          <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+              <span class="navbar-toggler-bar"></span>
+              <span class="navbar-toggler-bar"></span>
+              <span class="navbar-toggler-bar"></span>
           </button>
-        </li>
-  
-        <li class=" nav-item" ngbDropdown>
-          <a
-            class=" nav-link"
-            data-toggle="dropdown"
-            href="javascript:void(0)"
-            ngbDropdownToggle
-          >
-            <div class=" photo">
-              <img alt="Profile Photo" src="assets/img/anime3.png" />
-            </div>
-            <b class=" caret d-none d-lg-block d-xl-block"> </b>
-            <p class=" d-lg-none">Log out</p>
-          </a>
-          <ul class=" dropdown-navbar" ngbDropdownMenu>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Profile
-              </a>
-            </li>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Settings
-              </a>
-            </li>
-            <li class=" dropdown-divider"></li>
-            <li class=" nav-link">
-              <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Log out
-              </a>
-            </li>
+      </div>
+      <div class="navbar-collapse" id="navbarToggler">
+          <ul class="navbar-nav ml-auto">
+              <li class="nav-item" *ngIf="!isDocumentation()">
+                  <a class="nav-link" rel="tooltip" title="Follow us on Twitter" data-placement="bottom" href="" target="_blank">
+                      <i class="fa fa-twitter"></i>
+                      <p class="d-lg-none">Twitter</p>
+                  </a>
+              </li>
+              <li class="nav-item" *ngIf="!isDocumentation()">
+                  <a class="nav-link" rel="tooltip" title="Like us on Facebook" data-placement="bottom" href="" target="_blank">
+                      <i class="fa fa-facebook-square"></i>
+                      <p class="d-lg-none">Facebook</p>
+                  </a>
+              </li>
+              <li class="nav-item" *ngIf="!isDocumentation()">
+                  <a class="nav-link" rel="tooltip" title="Follow us on Instagram" data-placement="bottom" href="" target="_blank">
+                      <i class="fa fa-instagram"></i>
+                      <p class="d-lg-none">Instagram</p>
+                  </a>
+              </li>
+              <li class="nav-item" *ngIf="!isDocumentation()">
+                  <a class="nav-link" rel="tooltip" title="Star on GitHub" data-placement="bottom" href="" target="_blank">
+                      <i class="fa fa-github"></i>
+                      <p class="d-lg-none">GitHub</p>
+                  </a>
+              </li>
+              <li class="nav-item" *ngIf="!isDocumentation()">
+                  <a href="" class="nav-link" target="_blank"><i class="nc-icon nc-book-bookmark"></i> Documentation</a>
+              </li>
+              <li class="nav-item" *ngIf="isHome()">
+                  <a href="" target="_blank" class="btn btn-danger btn-round">Upgrade to Pro</a>
+              </li>
+              <li class="nav-item" *ngIf="!isHome()">
+                  <a *ngIf="!isDocumentation()" class="nav-link"><i class="nc-icon nc-layout-11"></i>Components</a>
+                  <a *ngIf="isDocumentation()" class="nav-link">Back to Kit</a>
+              </li>
+              <li class="nav-item" *ngIf="isDocumentation()">
+                  <a href="" target="_blank" class="nav-link">Have an issue</a>
+              </li>
           </ul>
-        </li>
-        <li class=" separator d-lg-none"></li>
-      </ul>
-    </div>
+      </div>
   </div>
 </nav>
-
-<ng-template #content let-modal>
-  <div class=" modal-header">
-    <input
-      class=" form-control"
-      id="inlineFormInputGroup"
-      placeholder="SEARCH"
-      type="text"
-    />
-
-    <button
-      aria-label="Close"
-      class=" close"
-      data-dismiss="modal"
-      type="button"
-      (click)="modal.dismiss('Cross click')"
-    >
-      <i class=" tim-icons icon-simple-remove"> </i>
-    </button>
-  </div>
-
-</ng-template>

@@ -4,7 +4,7 @@ import {Routes } from "@angular/router";
 import { LoginComponent, RegisterComponent } from './account';
 import { authGuard } from './_helpers';
 
-import { HomeComponent } from "./pages/home";
+import { HomeComponent } from "../../src/app/pages/home/home.component";
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 
@@ -16,7 +16,8 @@ const usersRoutes = () => import('./users/users.routes').then(x => x.USERS_ROUTE
 
 
 export const APP_ROUTES: Routes= [
-    { path: '', component: HomeComponent},
+  { path: '', component: HomeComponent,  },
+  
 
     { path: 'users', loadChildren: usersRoutes, canActivate: [authGuard] },
     
