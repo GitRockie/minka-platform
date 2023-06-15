@@ -1,10 +1,11 @@
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
-import { NgClass, NgFor, NgIf } from "@angular/common";
+import { NgClass, NgIf, NgFor } from "@angular/common";
 import { Location } from "@angular/common";
-import { RouterLink, RouterLinkActive, RouterOutlet, Router } from '@angular/router';
-import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle } from '@ng-bootstrap/ng-bootstrap';
+import { AccountService } from "@app/_services";
+import { RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute  } from '@angular/router';
+import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle,  } from '@ng-bootstrap/ng-bootstrap';
 
-import { ADMIN_ROUTES } from "@app/layouts/admin-layout/admin.routes.ts";
+
 import { ROUTES } from "../sidebar/sidebar.component";
 
 
@@ -12,12 +13,12 @@ import { ROUTES } from "../sidebar/sidebar.component";
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle ],
+  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle, ],
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-
+  
   private listTitles?: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -29,10 +30,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   closeResult?: string;
 
   constructor(
+    private accountService: AccountService, 
     private router: Router,
     location: Location,
     private element: ElementRef,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private route: ActivatedRoute
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -180,7 +183,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
         return this.listTitles![item].title;
       }
     }
-    return "Dashboard";
+     // Get the last segment of the URL after the last slash
+  const segments = titlee.split('/');
+  const title = segments[segments.length - 1];
+  // Remove the protocol, host, and base path from the title
+  
+  const cleanTitle = title.replace("/", '');
+
+    return cleanTitle   ;
   }
 
   open(content: any) {
@@ -203,4 +213,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
   }
+  logout() {
+    this.accountService.logout();
+}
 }

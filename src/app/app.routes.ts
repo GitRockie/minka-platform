@@ -1,11 +1,12 @@
-import { Route } from "@angular/router";
+import {Routes } from "@angular/router";
 
 
 import { LoginComponent, RegisterComponent } from './account';
 import { authGuard } from './_helpers';
 
-import { HomeComponent } from "./pages/home";
+import { HomeComponent } from "./home/home.component";
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { TypographyComponent } from "./pages";
 
 
 
@@ -15,26 +16,23 @@ const usersRoutes = () => import('./users/users.routes').then(x => x.USERS_ROUTE
 
 
 
-export const APP_ROUTES: Route[]= [
-    { path: '', component: HomeComponent, canActivate: [authGuard]},
-
-    { path: 'users', loadChildren: usersRoutes, canActivate: [authGuard] },
-    
-   
+export const APP_ROUTES: Routes= [
+    { path: '', component: HomeComponent},
+    { path: 'users', loadChildren: usersRoutes },
     { path: 'account/login', component: LoginComponent },
     { path: 'account/register', component: RegisterComponent },
 
-    {
-        path: "",
-        component: AdminLayoutComponent,
+    { path: "admin", 
+      component:AdminLayoutComponent, 
+      canActivate: [authGuard],
         children: [
-     
           {
-            path: "admin",
+            path: "",
             loadChildren: () => import ("./layouts/admin-layout/admin.routes.ts").then(m => m.ADMIN_ROUTES)
           }
         ]
       },
+      { path: "privacy", component: TypographyComponent },
     
     
 
