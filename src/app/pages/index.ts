@@ -5,4 +5,3 @@ export * from "./notifications/notifications.component";
 export * from "./typography/typography.component";
 export * from "./user/user.component";
 export * from "./tables/tables.component";
-export * from "./home/home.component";

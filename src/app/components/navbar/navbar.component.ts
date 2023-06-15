@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
 import { NgClass, NgIf, NgFor } from "@angular/common";
 import { Location } from "@angular/common";
-
+import { AccountService } from "@app/_services";
 import { RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute  } from '@angular/router';
 import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle,  } from '@ng-bootstrap/ng-bootstrap';
 
@@ -13,12 +13,12 @@ import { ROUTES } from "../sidebar/sidebar.component";
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle ],
+  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle, ],
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-
+  
   private listTitles?: any[];
   location: Location;
   mobile_menu_visible: any = 0;
@@ -30,6 +30,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   closeResult?: string;
 
   constructor(
+    private accountService: AccountService, 
     private router: Router,
     location: Location,
     private element: ElementRef,
@@ -212,4 +213,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnDestroy(){
      window.removeEventListener("resize", this.updateColor);
   }
+  logout() {
+    this.accountService.logout();
+}
 }
