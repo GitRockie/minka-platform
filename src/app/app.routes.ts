@@ -23,7 +23,7 @@ export const APP_ROUTES: Routes= [
     { path: 'users', loadChildren: usersRoutes },
     { path: 'account/login', component: LoginComponent },
     { path: 'account/register', component: RegisterComponent },
-    { path: "politica", component: PoliticaComponent },
+    { path: "politica", component: PoliticaComponent, title: 'Politica de privacidad' },
 
     { path: "admin", 
       component:AdminLayoutComponent, 
@@ -35,7 +35,7 @@ export const APP_ROUTES: Routes= [
           }
         ]
       },
-      { path: "privacy", component: TypographyComponent },
+   
     
     
 
