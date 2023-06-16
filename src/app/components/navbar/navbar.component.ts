@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   closeResult = "";
 
+
   constructor(
     private accountService: AccountService, 
     private router: Router,
@@ -194,6 +195,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   open(content: any) {
+    
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
