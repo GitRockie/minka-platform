@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { NgIf } from '@angular/common';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive, RouterOutlet, RouterModule } from '@angular/router';
 
 
 import { AccountService} from './_services';
@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 @Component({
   selector: "app-root",
   standalone: true,
-  imports: [NgIf, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent, FooterComponent, HomeComponent, NavbarComponent],
+  imports: [NgIf, RouterModule, RouterOutlet, RouterLink, RouterLinkActive, AlertComponent, FooterComponent, HomeComponent, NavbarComponent],
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
