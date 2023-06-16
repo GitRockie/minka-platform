@@ -3,7 +3,7 @@ import { NgClass, NgFor, NgIf } from "@angular/common";
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgbModule, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu} from '@ng-bootstrap/ng-bootstrap';
 
-import { SidebarComponent, NavbarComponent, NavbarHomeComponent, FooterComponent } from "@app/components";
+import { SidebarComponent, NavbarComponent, FooterComponent } from "@app/components";
 
 
 import { User } from '@app/_models';
@@ -12,7 +12,7 @@ import { AccountService } from '@app/_services';
 @Component({
   selector: "app-admin-layout",
   standalone: true,
-  imports: [NgClass, NgFor, NgIf, RouterOutlet, RouterLink, RouterLinkActive, SidebarComponent, NavbarComponent, NavbarComponent, FooterComponent, NgbModule, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu],
+  imports: [NgClass, NgFor, NgIf, RouterOutlet, RouterLink, RouterLinkActive, SidebarComponent, NavbarComponent, FooterComponent, NgbModule, NgbDropdown, NgbDropdownToggle, NgbDropdownMenu],
   templateUrl: "./admin-layout.component.html",
   styleUrls: ["./admin-layout.component.scss"]
 })

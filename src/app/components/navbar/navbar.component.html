@@ -40,7 +40,7 @@
             id="search-button"
           >
             <i class=" tim-icons icon-zoom-split"> </i>
-            <span class=" d-lg-none d-md-block"> Search </span>
+            <span class=" d-lg-none d-md-block">Buscar </span>
           </button>
         </li>
   
@@ -55,24 +55,24 @@
               <img alt="Profile Photo" src="assets/img/anime3.png" />
             </div>
             <b class=" caret d-none d-lg-block d-xl-block"> </b>
-            <p class=" d-lg-none"><a ></a>Log out</p>
+            <p class=" d-lg-none"><a ></a>Cerrar sesión</p>
           </a>
           <ul class=" dropdown-navbar" ngbDropdownMenu>
             <li class=" nav-link">
               <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Profile
+                Perfil
               </a>
             </li>
             <li class=" nav-link">
               <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem>
-                Settings
+                Ajustes
               </a>
             </li>
             <li class=" dropdown-divider"></li>
             <li class=" nav-link">
               <a class=" nav-item" href="javascript:void(0)" ngbDropdownItem
               (click)="logout()">
-                Log out
+              Cerrar sesión
               </a>
             </li>
           </ul>
@@ -93,13 +93,16 @@
     />
 
     <button
-      aria-label="Close"
-      class=" close"
-      data-dismiss="modal"
       type="button"
-      (click)="modal.dismiss('Cross click')"
+      aria-label="Close"
+      class="close"
+      
+      data-dismiss="modal"
+     
+     
     >
       <i class=" tim-icons icon-simple-remove"> </i>
+      
     </button>
   </div>
 

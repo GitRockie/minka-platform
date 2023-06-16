@@ -17,7 +17,8 @@ const usersRoutes = () => import('./users/users.routes').then(x => x.USERS_ROUTE
 
 
 export const APP_ROUTES: Routes= [
-    { path: '', component: HomeComponent},
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent, title: 'Inicio'},
     { path: 'users', loadChildren: usersRoutes },
     { path: 'account/login', component: LoginComponent },
     { path: 'account/register', component: RegisterComponent },
@@ -37,5 +38,5 @@ export const APP_ROUTES: Routes= [
     
 
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'home' }
 ];

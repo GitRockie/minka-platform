@@ -1,10 +1,10 @@
-import { Component, OnInit, ElementRef, OnDestroy } from "@angular/core";
+import { Component, OnInit, ElementRef, OnDestroy, } from "@angular/core";
 import { NgClass, NgIf, NgFor } from "@angular/common";
 import { Location } from "@angular/common";
 import { AccountService } from "@app/_services";
-import { RouterLink, RouterLinkActive, RouterOutlet, Router, ActivatedRoute  } from '@angular/router';
-import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle,  } from '@ng-bootstrap/ng-bootstrap';
-
+import { RouterLink, RouterLinkActive, RouterOutlet, Router  } from '@angular/router';
+import { NgbModal, ModalDismissReasons, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbActiveModal,NgbDropdownToggle,  } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
 import { ROUTES } from "../sidebar/sidebar.component";
 
@@ -13,7 +13,7 @@ import { ROUTES } from "../sidebar/sidebar.component";
 @Component({
   selector: "app-navbar",
   standalone: true,
-  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle, ],
+  imports: [RouterLinkActive, RouterLink, NgIf, RouterOutlet, NgFor, NgClass, NgbCollapse, NgbDropdownMenu, NgbDropdownItem, NgbDropdown, NgbDropdownToggle, NgbDropdownItem, ReactiveFormsModule, FormsModule],
   templateUrl: "./navbar.component.html",
   styleUrls: ["./navbar.component.css"]
 })
@@ -27,7 +27,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public isCollapsed = true;
 
-  closeResult?: string;
+  closeResult = "";
+
 
   constructor(
     private accountService: AccountService, 
@@ -35,7 +36,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     location: Location,
     private element: ElementRef,
     private modalService: NgbModal,
-    private route: ActivatedRoute
+
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -194,6 +195,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   open(content: any) {
+    
     this.modalService.open(content, {windowClass: 'modal-search'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
