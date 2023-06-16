@@ -17,26 +17,26 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "icons",
+    path: "matchfinder",
     title: "MatchFinder",
     icon: "icon-badge",
     class: ""
   },
   
   {
-    path: "tables",
+    path: "proyectos",
     title: "Proyectos",
     icon: "icon-spaceship",
     class: ""
   },
   {
-    path: "user",
+    path: "perfil",
     title: "User Profile",
     icon: "icon-single-02",
     class: "  "
   },
   {
-    path: "typography",
+    path: "privacidad",
     title: "Politica de privacidad",
     icon: "icon-tie-bow",
     class: ""
